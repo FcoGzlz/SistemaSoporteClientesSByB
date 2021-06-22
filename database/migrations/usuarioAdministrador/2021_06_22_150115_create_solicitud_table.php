@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateSolicitudtable extends Migration
+class CreateSolicitudTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,9 +19,10 @@ class CreateSolicitudtable extends Migration
             $table->string('apellidoCliente');
             $table->string('organizacion');
             $table->string('descripcion');
-            $table->int('prioridad');
+            $table->integer('prioridad');
             $table->timestamp('fechaIngreso');
-            $table->int('estado');
+            $table->integer('estado');
+            $table->timestamps();
         });
     }
 
