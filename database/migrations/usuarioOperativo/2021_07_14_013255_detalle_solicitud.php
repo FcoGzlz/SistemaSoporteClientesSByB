@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateDetalleSolicitudTable extends Migration
+class DetalleSolicitud extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDetalleSolicitudTable extends Migration
      */
     public function up()
     {
-        Schema::create('detalleSolicitud', function (Blueprint $table) {
+        Schema::create('detalle_solicitud', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('descripcion');
-            $table->int('prioridad');
+            $table->string('detalle', '500');
             $table->timestamp('fecha');
-            $table->int('estado');
+            $table->unsignedBigInteger('solicitud');
+            $table->timestamps();
         });
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -23,6 +25,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $usuario = Auth::user();
+        $rol = $usuario->roles->implode('name', ', ');
+
+        switch ($rol) {
+            case 'superAdmin':
+                # code...
+                break;
+
+            case 'UAdministrador':
+                return redirect()->route('solicitudesClientes');
+                break;
+            case 'UOperativo':
+                return redirect()->route('solicitudesPendientes');
+                break;
+
+        }
         return view('home');
     }
 }
